@@ -4,6 +4,7 @@ import com.nicode.autorizationservice.authorities.Authorities;
 import com.nicode.autorizationservice.exception.InvalidCredentials;
 import com.nicode.autorizationservice.exception.UnauthorizedUser;
 import com.nicode.autorizationservice.repository.UserRepository;
+import com.nicode.autorizationservice.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +17,9 @@ public class AuthorizationService {
         this.userRepository = repository;
     }
 
-    public List<Authorities> getAuthorities(String user, String password) {
+	public List<Authorities> getAuthorities(User useR) {
+        String user = useR.getName();
+        String password = useR.getPassword();
         if (isEmpty(user) || isEmpty(password)) {
             throw new InvalidCredentials("User name or (and) password is (are) empty");
         }
