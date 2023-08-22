@@ -1,0 +1,6 @@
+version: '29'
+services:
+  container1:
+    build: ./
+    ports:
+    - "7777:8080"
